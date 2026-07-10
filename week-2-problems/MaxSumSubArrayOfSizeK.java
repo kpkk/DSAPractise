@@ -30,6 +30,7 @@ public class MaxSumSubArrayOfSizeK {
      */
 
     public int maxSumSubArray(int[] nums, int k) {
+
         int runningSum = 0, maxSum = 0;
         for (int i = 0; i < k; i++) { // O(k)
             runningSum += nums[i];
