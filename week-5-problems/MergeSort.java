@@ -14,6 +14,12 @@ public class MergeSort {
         Assertions.assertArrayEquals(new int[]{1, 2, 4, 8, 11, 17, 18, 22}, mergeSort(nums));
     }
 
+    @Test
+    public void test1() {
+        int[] nums = {5,4,3,2};
+        Assertions.assertArrayEquals(new int[]{2,3,4,5}, mergeSort(nums));
+    }
+
     public int[] mergeSort(int[] nums) {
         sort(nums, 0, nums.length - 1);
         return nums;
@@ -22,7 +28,7 @@ public class MergeSort {
     public void sort(int[] nums, int start, int end) {
         if (start >= end) return; // base case {2,3} 0,1 ->{2}->0,{3}->0
         int mid = (start + end) / 2;
-        sort(nums, 0, mid); // left recursive call
+        sort(nums, start, mid); // left recursive call
         sort(nums, mid + 1, end); // right recursive calls
         mergeTwoArrays(nums, start, mid, end);
     }
