@@ -1,0 +1,269 @@
+
+System design:
+    - How are solving the problem at hand
+    - how are we navigating the ambiguities
+    - how well are we considerate about trade-offs
+
+Low level design - 
+    classes, 
+    objects, 
+    relationships, 
+    structures, 
+    api contracts, 
+    DB schemas, 
+    design patterns
+   design principles
+    framework architecture
+    Sequence diagrams, UML diagrams
+
+High level design
+    moving components in the system
+    load balancers
+    API gateways
+    databases
+    caches
+    messaging queues
+    deployments
+    micro services
+
+
+E-commerce site
+    - websearch
+    - product services
+    - offer service
+    - payment service
+    - order service
+    - user service
+    - Auth service
+    - Analytics service
+    - Fraud detection service
+
+
+OOPs fundamentals
+Design principles (SOLID, DRY, KISS)
+Design patterns
+a few problems
+
+Classes - variables, constants, methods, objects, imports, packages
+interfaces
+Objects
+Constructor
+Abstraction
+Polymorphism
+    method overloading - static
+    method overriding - dynamic
+    method hiding
+    how does it work with exception handling
+Encapsulation
+Inheritance
+Association
+Aggregation
+Composition 
+interface Bank{
+    loan(); i.R: 6%
+}
+class AxisBank implements Bank{
+    @OverRide()
+    public float loan(){ // 7%
+    }
+}
+
+class HDFCBank implements Bank{
+    @OverRide()
+    public float loan(){ // 9%
+    }
+}
+
+public static void main(Str[] args){
+
+   Bank bc= new AxisBank();
+
+   Bank bc1= new HDFCBank();
+    bc.loan(); // 7%
+    bc1.loan(); // 9%
+}
+
+
+Encapsulation:
+   The process of binding the data with methods in a class
+
+
+class have - states, behaviours
+
+public class BankAccount{
+    private float balance;
+
+    public void setBalance(int amount){
+        if(amount>0)
+            balance+=amount;
+    }
+
+    public int getBalance(){
+        if(authorised_user)
+            return balance;
+    }
+
+    public void deposit(int amount){
+      balance+=amount;
+    }
+
+    public void withDraw(int amount){
+      balance-=amount;
+    }
+
+    public void printBalance(){
+     sout(“balance remaining is:”+ balance);
+}
+}
+
+
+
+public class BankAccount{
+    public float balance;
+
+    public void deposit(int amount){
+      balance+=amount;
+    }
+
+    public void withDraw(int amount){
+      balance-=amount;
+    }
+
+    public void printBalance(){
+     sout(“balance remaining is:”+ balance);
+}
+}
+
+Animal -> Dog, cat, horse
+Is-a relation, 
+
+public class Animal{
+    public walk(){
+    }
+    public eat(){
+    }
+    public bark(){
+    }
+
+}
+
+public WaterAnimals
+
+public class Dolphin extends Animal{
+ 
+
+}
+
+Public class User{.  has-A
+ Address address;
+
+}
+
+public class Address{
+    String name;
+    String d.no;
+    String street;
+    String country;
+
+}
+
+Car -> Engine - composition (strictly coupled)
+House-> rooms - composition (strictly coupled)
+Mentor-> students - Association / Aggeration 
+
+
+Functional questions:-
+Do we support multiple vehicle types?
+Do we have different types of parking spots?
+Can one spot accommodate only one vehicle?
+Do we need entry and exit gates?
+Do we need to generate a ticket?
+Do we need fee calculation?
+Can pricing differ by vehicle type?
+Do we need multiple floors?
+Do we need multiple parking lots?
+For a small interview exercise, let's assume:
+
+
+
+requirement gathering?
+
+- Users should be able to park diff types vehicles
+- One parking spot is meant for one vehicle
+- if a spot is allocated then it can’t be assigned
+- Fee should be calculated based on parking hours and vehicle type
+- Once the vehicle is removed free up the space
+- Accept diff payment types
+- have multiple payment / fee calculation charges
+
+
+    - identify the classes and objects
+        - Vehicle - 
+              - regd. number
+              - type of the vehicle
+        - parking lot details
+               - Available spots
+               - Vehicle
+               - payment strategy 
+               - verbs -> park vehicle, remove vehicle, slot_available()
+        - duration hours - X
+        - payment mode /stratgies
+                - Hourly payment
+                - Weekend Payment
+                - Free tier payment strategy 
+                - verb: calculate the amount
+        - tickets
+            - id
+            - startTime
+            - endTime
+            - duration
+            - charges
+            - payment mode
+            - spot number
+            - information 
+            - verb: printTicketDetails
+        - parking spot details
+               - spot id
+               - spot type 
+               - Vehicle information
+               - verb -> occupied / free, park, remove 
+        - Notification service
+                - verb : send notification
+                            - emails, SMS, whatsAPP
+        - Parking manager - same as parking lot details above
+               
+        - Available_slots - X (covered above)
+        - users - X (irrelevant for this use case)
+        - fairs / hours and charges - covered
+        - pricing labs - to be decided / not in this MVP
+Design
+
+Implementation
+
+SDET- involve right from PRD discussion
+PRD- > product req doc - PM / TPM
+UX/ UI -> will stat design / screens (figma)
+TRD-> technical req doc -> devs -> HLD & LLD
+SDET -> RTM /prepare test scripts / framework enhancements 
+App deployed in staging - test / stabilise the tests
+
+
+1. What are the entities?
+       ↓
+2. What does each entity know?
+       ↓
+3. What does each entity do?
+       ↓
+4. What should be hidden?
+       ↓
+5. What are the relationships?
+       ↓
+6. Where do I need an interface?
+       ↓
+7. Where does polymorphism help?
+       ↓
+8. Should this be inheritance or composition?
+       ↓
+9. Are responsibilities properly separated?
+       ↓
+10. Can I easily extend the design?
