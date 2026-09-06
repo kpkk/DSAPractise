@@ -1,7 +1,18 @@
-package week11.demo_parking_app;
+package lld.parking_lot;
 
 public enum SpotType {
-    SMALL,
-    MEDIUM,
-    LARGE
+
+    COMPACT("COMPACT"),
+    MEDIUM("MEDIUM"),
+    LARGE("LARGE");
+
+    String space;
+
+    SpotType(String space){
+        this.space=space;
+    }
+
+    public String getSpace(){
+        return space;
+    }
 }

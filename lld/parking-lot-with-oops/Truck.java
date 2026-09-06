@@ -1,16 +1,13 @@
-package week11.demo_parking_app;
+package lld.parking_lot;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+public class Truck extends Vehicle {
 
-public class Truck extends Vehicle{
-
-    public Truck(String number){
-        super(number, String.valueOf(VehicleType.TRUCK));
+    public Truck(String number, VehicleType type){
+        super(number, type);
     }
-
     @Override
     public boolean canFit(SpotType spotType) {
-        return SpotType.LARGE==spotType;
+        // truck can only fit if its a large space
+        return spotType.getSpace().equals(SpotType.LARGE.space);
     }
 }

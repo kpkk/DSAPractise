@@ -1,15 +1,13 @@
-package week11.demo_parking_app;
-
+package lld.parking_lot;
 
 public abstract class Vehicle {
 
     private String number;
-    private String vehicleType;
+    private VehicleType type;
 
-
-    public Vehicle(String number, String vehicleType) {
+    public Vehicle(String number, VehicleType type) {
         this.number = number;
-        this.vehicleType = vehicleType;
+        this.type = type;
     }
 
     public String getNumber() {
@@ -20,13 +18,14 @@ public abstract class Vehicle {
         this.number = number;
     }
 
-    public String getVehicleType() {
-        return vehicleType;
+    public VehicleType getType() {
+        return type;
     }
 
-    public void setVehicleType(String vehicleType) {
-        this.vehicleType = vehicleType;
+    public void setType(VehicleType type) {
+        this.type = type;
     }
 
     public abstract boolean canFit(SpotType spotType);
+
 }

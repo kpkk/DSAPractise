@@ -1,54 +1,51 @@
-package week11.demo_parking_app;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
-
+package lld.parking_lot;
 
 public class ParkingSpot {
-    private final int id;
-    private final SpotType spotType;
-    private Vehicle vehicle;
+  // has-A
+    private String spotId;
 
-    public ParkingSpot(int id, SpotType spotType) {
-        this.id = id;
-        this.spotType = spotType;
+    private SpotType type;
+    private Vehicle vehicle; // Association
+
+    public ParkingSpot(String spotId, SpotType type) {
+        this.spotId = spotId;
+        this.type = type;
     }
 
-    public int getId() {
-        return id;
+    public SpotType getType() {
+        return type;
     }
 
-    public Vehicle getVehicle() {
-        return vehicle;
+    public void setType(SpotType type) {
+        this.type = type;
     }
 
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
+    public String getSpotId() {
+        return spotId;
     }
 
-    public SpotType getSpotType() {
-        return spotType;
+    public void setSpotId(String spotId) {
+        this.spotId = spotId;
     }
 
-
-
+    // it tells me whether the parking slot is free or not
     public boolean isAvailable(){
-        return vehicle==null;
+        return this.vehicle==null;
     }
-
     public boolean canFit(Vehicle vehicle){
-        return isAvailable() && vehicle.canFit(spotType);
+        return isAvailable()&& vehicle.canFit(type);
     }
 
     public void park(Vehicle vehicle){
         if(!isAvailable()){
-            throw new RuntimeException("spot is not available");
+            System.out.println("parking is not possible");
         }
         this.vehicle=vehicle;
     }
 
-    public void removeVehicle(){
+    public void remove(){
+        System.out.println("removing the vehicle, freeing up the space");
         this.vehicle=null;
     }
+
 }

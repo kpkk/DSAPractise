@@ -1,19 +1,15 @@
-package week11.demo_parking_app;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
+package lld.parking_lot;
 
 import java.util.List;
 
 public class ParkingLot {
 
     private List<ParkingSpot> parkingSpots;
-    private ParkingFeeStrategy feeStrategy;
+    private PaymentStrategy paymentStrategy;
 
-
-    public ParkingLot(List<ParkingSpot> parkingSpots, ParkingFeeStrategy feeStrategy) {
+    public ParkingLot(List<ParkingSpot> parkingSpots, PaymentStrategy paymentStrategy) {
         this.parkingSpots = parkingSpots;
-        this.feeStrategy = feeStrategy;
+        this.paymentStrategy = paymentStrategy;
     }
 
     public List<ParkingSpot> getParkingSpots() {
@@ -24,29 +20,35 @@ public class ParkingLot {
         this.parkingSpots = parkingSpots;
     }
 
-    public ParkingFeeStrategy getFeeStrategy() {
-        return feeStrategy;
+    public PaymentStrategy getPaymentStrategy() {
+        return paymentStrategy;
     }
 
-    public void setFeeStrategy(ParkingFeeStrategy feeStrategy) {
-        this.feeStrategy = feeStrategy;
+    public void setPaymentStrategy(PaymentStrategy paymentStrategy) {
+        this.paymentStrategy = paymentStrategy;
     }
 
     public ParkingSpot parkVehicle(Vehicle vehicle){
-        for (ParkingSpot parkingSpot:parkingSpots){
-            if(parkingSpot.canFit(vehicle)) {
-                parkingSpot.park(vehicle);
-                System.out.println("vehicle:" + vehicle.getNumber() + " parked at the spot id " + parkingSpot.getId());
-                return parkingSpot;
+        for (ParkingSpot spot: parkingSpots){
+            if(spot.canFit(vehicle)){
+                spot.park(vehicle);
+                System.out.println("vehicle "+vehicle.getType().type +" parked in spot "+spot.getSpotId());
+
+                // send a notification about parking
+                return spot;
             }
         }
-        throw new RuntimeException("No suitable parking available");
+        throw new RuntimeException("No suitable parking spot found.");
     }
 
-    public void removeVehicle(ParkingSpot spot, Vehicle vehicle, int hours){
-        spot.removeVehicle();
-        double fee = feeStrategy.calculateFee(vehicle, hours);
-        System.out.println("vehicle "+vehicle.getNumber()+" is removed");
-        System.out.println("parking fee "+fee);
+    public void removeVehicle(Vehicle vehicle, ParkingSpot spot, int hours){
+        spot.remove();
+        // compute the charges
+        double amount = paymentStrategy.calculateCharges(vehicle, hours);
+        System.out.println("vehicle has been removed from spotId"+ spot.getSpotId());
+        System.out.println("Charges imposed were "+ amount);
+
+        // send a notification here
     }
+
 }

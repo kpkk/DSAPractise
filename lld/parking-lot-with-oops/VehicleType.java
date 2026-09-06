@@ -1,9 +1,10 @@
-package week11.demo_parking_app;
+package lld.parking_lot;
 
 public enum VehicleType {
+
+    BIKE("BIKE"),
     CAR("CAR"),
-    TRUCK("TRUCK"),
-    BIKE("BIKE");
+    TRUCK("TRUCK");
 
     String type;
     VehicleType(String type){
@@ -13,4 +14,5 @@ public enum VehicleType {
     public String getType(){
         return type;
     }
+
 }
