@@ -172,6 +172,17 @@ House-> rooms - composition (strictly coupled)
 Mentor-> students - Association / Aggeration 
 
 
+Functional questions:-
+Do we support multiple vehicle types?
+Do we have different types of parking spots?
+Can one spot accommodate only one vehicle?
+Do we need entry and exit gates?
+Do we need to generate a ticket?
+Do we need fee calculation?
+Can pricing differ by vehicle type?
+Do we need multiple floors?
+Do we need multiple parking lots?
+For a small interview exercise, let's assume:
 
 
 
@@ -235,3 +246,24 @@ UX/ UI -> will stat design / screens (figma)
 TRD-> technical req doc -> devs -> HLD & LLD
 SDET -> RTM /prepare test scripts / framework enhancements 
 App deployed in staging - test / stabilise the tests
+
+
+1. What are the entities?
+       ↓
+2. What does each entity know?
+       ↓
+3. What does each entity do?
+       ↓
+4. What should be hidden?
+       ↓
+5. What are the relationships?
+       ↓
+6. Where do I need an interface?
+       ↓
+7. Where does polymorphism help?
+       ↓
+8. Should this be inheritance or composition?
+       ↓
+9. Are responsibilities properly separated?
+       ↓
+10. Can I easily extend the design?
